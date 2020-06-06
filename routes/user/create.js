@@ -3,7 +3,7 @@ const Express = require("express");
 const router = Express.Router();
 const User = require("../../models/User");
 
-router.post("/", async (req, res) => {
+router.put("/", async (req, res) => {
   const { name, email, role, password } = req.body;
 
   try {

@@ -11,7 +11,7 @@ router.get("/:id", async (req, res) => {
       runValidators: true
     };
 
-    const userDB = await User.find( { _id: id }, { name: 1, birth: 1, createdAt: 1, nickname: 1, _id : 0 });
+    const userDB = await User.find( { _id: id }, { name: 1, birth: 1, createdAt: 1, nickname: 1, _id : 0, password: 0 });
 
     res.json({ userDB });
   } catch (error) {

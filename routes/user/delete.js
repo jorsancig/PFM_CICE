@@ -18,7 +18,8 @@ router.delete("/:id", async (req, res) => {
     console.log(error);
     res.status(400).json(error);
   }
-res.status(400).json({message:9});
+
+  
 });
 
 
