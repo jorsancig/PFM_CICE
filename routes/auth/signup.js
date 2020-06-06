@@ -2,6 +2,8 @@ const Express = require("express");
 const router = Express.Router();
 const bcrypt = require( 'bcryptjs' )
 const User = require("../../models/User");
+const inner = require( '../../config/inner.json' )
+
 
 
 
@@ -9,19 +11,20 @@ router.post( '/', async ( req, res ) => {
 
     const { email, password, role, name  } = req.body
     // Encriptación
-    const saltRounds = 10;
-    const salt = bcrypt.genSaltSync( saltRounds )
+    const SALT_ROUNDS = inner.salt_rounds;
+
+    const salt = bcrypt.genSaltSync( SALT_ROUNDS )
 
     try {
 
         const user = await User.findOne( { email } )
         
         // Status 409 => Conflict
-        if ( user ) res.status( 409 ).json( { message: 'The user already exists' } )
+        if ( user ) return res.status( 409 ).json( { message: 'The user already exists' } )
 
     } catch (error) {
         console.log ( error ); 
-        res.status( 500 ).json( { message: 'Something wrong happens!' } )
+        return res.status( 500 ).json( { message: 'Something wrong happens!' } )
     }
 
 
@@ -37,12 +40,12 @@ router.post( '/', async ( req, res ) => {
     try {
         
         const userDB = await user.save();
-        res.status( 200 ).json( { message: 'User authenticated.', userDB } )
+        return res.status( 200 ).json( { message: 'User authenticated.', userDB } )
 
     } catch (error) {
         
         console.log( error );
-        res.status( 500 ).json( { message: 'Something wrong happens!' } )
+        return res.status( 500 ).json( { message: 'Something wrong happens!' } )
 
     }
         
