@@ -1,6 +1,6 @@
 {
-    "superAdmin" : "SUPERADMIN_ROL",
-    "admin" : "ADMIN_ROL",
-    "manager" : "MANAGER_ROL",
-    "user" : "USER_ROL"
+    "superAdmin"    :   "SUPERADMIN_ROLE",
+    "admin"         :   "ADMIN_ROLE",
+    "manager"       :   "MANAGER_ROLE",
+    "user"          :   "USER_ROLE"
 }
