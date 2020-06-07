@@ -38,7 +38,7 @@ app.use( session( {
   secret: SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true },
+  cookie: { secure: false },
   store: new MongoStore( {
     mongooseConnection: mongoose.connection
   } )

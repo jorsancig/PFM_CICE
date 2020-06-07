@@ -27,8 +27,6 @@ router.post( '/', async( req, res ) => {
         if( !bcrypt.compareSync( password, passwordDB ) ) return res.status( 401 ).json( { message: 'Password is not correct.' } )
 
         req.session.currentUser = userDB
-
-        console.log(  req.session );
         return res.status( 200 ).json( {message: 'User authenticated'} )
 
 
