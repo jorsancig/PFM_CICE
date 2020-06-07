@@ -16,8 +16,13 @@ const app = Express();
 const bodyParser = require("body-parser");
 const mongoose = require( "mongoose" );
 
+// LOGIN
+// Basic
 const session = require( 'express-session' )
 const MongoStore = require( 'connect-mongo' )( session )
+//Social
+const passport = require( 'passport' );
+const LocalStrategy = require( 'passport-local' ).Strategy
 
 
 
@@ -36,7 +41,7 @@ app.use(bodyParser.json());
 // Sistema de sesiones
 app.use( session( {
   secret: SECRET,
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { secure: false },
   store: new MongoStore( {
@@ -44,6 +49,53 @@ app.use( session( {
   } )
 } ) )
 
+
+// PASSPORT
+const User = require("./models/User");
+const bcrypt = require( 'bcryptjs' )
+
+app.use( passport.initialize() )
+app.use( passport.session() )
+passport.serializeUser( ( user, callback ) => {
+  callback( null, user )
+} )
+passport.deserializeUser( async( id, callback ) => {
+  console.log( 'DESERIALIZER' )
+  try {
+    const userDB = await User.findById( id )
+    if( !user ) return callback( null, false, 'User does not exist.' )
+
+    return callback( null, user )
+
+  } catch (error) {
+    console.log( error )
+    return callback( error )
+  }
+} )
+
+passport.use( new LocalStrategy( async ( usernameField, password, callback ) => {
+  console.log( 'LOCAL STRATEGY' )
+
+  const SALT_ROUNDS =  inner.salt_rounds;
+  const salt = bcrypt.genSaltSync( SALT_ROUNDS )
+
+  try {
+    const userDB = await User.findOne( { username } )
+
+    if( !userDB ) return next( null, false, { message: 'User does not exist.' } )
+  
+    const passwordDB = userDB.password
+    const hashPass = bcrypt.hashSync( password, salt )
+  
+    if( !bcrypt.compareSync( password, passwordDB ) ) return next( null, false, { message: 'Password is not correct.' } )
+  
+    next( null, user )
+  
+  } catch (error) {
+    next( error )
+  }
+
+} ) )
 
 
 // -- CONFIG. FILES --
@@ -86,3 +138,7 @@ app.use( ( req, res ) => {
 app.listen(SERVER_PORT, () => {
   console.log(`Server listening on port ${SERVER_PORT} `);
 });
+
+
+
+module.exports = app
