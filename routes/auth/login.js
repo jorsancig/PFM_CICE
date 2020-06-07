@@ -12,7 +12,7 @@ router.post( '/', async( req, res ) => {
 
     const { email, password } = req.body
     const SALT_ROUNDS =  inner.salt_rounds;
-    const salt = bcrypt.genSaltSync( 10 )
+    const salt = bcrypt.genSaltSync( SALT_ROUNDS )
 
 
     try {
