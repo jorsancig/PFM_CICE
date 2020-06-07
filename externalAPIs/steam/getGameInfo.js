@@ -10,7 +10,6 @@ router.get( '/:gameID', async( req, res ) => {
 
         const response = await axios.get( `http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=400&count=3&maxlength=300&format=json` )
         response.data.appnews.newsitems.steamURL = `https://store.steampowered.com/app/${gameID}`
-        console.log( response.data.appnews.newsitems )
         return res.status( 200 ).json( response.data.appnews.newsitems.steamURL )
 
     } catch (error) {
@@ -19,7 +18,6 @@ router.get( '/:gameID', async( req, res ) => {
 
     }
     
-    const response = await axios.get( 'https://api.steampowered.com/ISteamApps/GetAppList/v1/' )
 } )
 
 
