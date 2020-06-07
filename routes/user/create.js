@@ -7,7 +7,7 @@ router.put("/", async (req, res) => {
   const { name, email, role, password } = req.body;
 
   try {
-    const user = new User( { name, email, role, password } );
+    const user = new User( { name, email, password } );
     console.log(user);
 
     const userDB = await user.save();
