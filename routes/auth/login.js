@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 const Express = require("express");
 const router = Express.Router();
 const bcrypt = require( 'bcryptjs' )
@@ -28,7 +28,8 @@ router.post( '/', async( req, res ) => {
 
         req.session.currentUser = userDB
 
-    return res.status( 200 ).json( {message: 'User authenticated'} )
+        console.log(  req.session );
+        return res.status( 200 ).json( {message: 'User authenticated'} )
 
 
 
