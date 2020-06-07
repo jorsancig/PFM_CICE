@@ -51,51 +51,51 @@ app.use( session( {
 
 
 // PASSPORT
-const User = require("./models/User");
-const bcrypt = require( 'bcryptjs' )
+// const User = require("./models/User");
+// const bcrypt = require( 'bcryptjs' )
 
-app.use( passport.initialize() )
-app.use( passport.session() )
-passport.serializeUser( ( user, callback ) => {
-  callback( null, user )
-} )
-passport.deserializeUser( async( id, callback ) => {
-  console.log( 'DESERIALIZER' )
-  try {
-    const userDB = await User.findById( id )
-    if( !user ) return callback( null, false, 'User does not exist.' )
+// app.use( passport.initialize() )
+// app.use( passport.session() )
+// passport.serializeUser( ( user, callback ) => {
+//   callback( null, user )
+// } )
+// passport.deserializeUser( async( id, callback ) => {
+//   console.log( 'DESERIALIZER' )
+//   try {
+//     const userDB = await User.findById( id )
+//     if( !user ) return callback( null, false, 'User does not exist.' )
 
-    return callback( null, user )
+//     return callback( null, user )
 
-  } catch (error) {
-    console.log( error )
-    return callback( error )
-  }
-} )
+//   } catch (error) {
+//     console.log( error )
+//     return callback( error )
+//   }
+// } )
 
-passport.use( new LocalStrategy( async ( usernameField, password, callback ) => {
-  console.log( 'LOCAL STRATEGY' )
+// passport.use( new LocalStrategy( async ( usernameField, password, callback ) => {
+//   console.log( 'LOCAL STRATEGY' )
 
-  const SALT_ROUNDS =  inner.salt_rounds;
-  const salt = bcrypt.genSaltSync( SALT_ROUNDS )
+//   const SALT_ROUNDS =  inner.salt_rounds;
+//   const salt = bcrypt.genSaltSync( SALT_ROUNDS )
 
-  try {
-    const userDB = await User.findOne( { username } )
+//   try {
+//     const userDB = await User.findOne( { username } )
 
-    if( !userDB ) return next( null, false, { message: 'User does not exist.' } )
+//     if( !userDB ) return next( null, false, { message: 'User does not exist.' } )
   
-    const passwordDB = userDB.password
-    const hashPass = bcrypt.hashSync( password, salt )
+//     const passwordDB = userDB.password
+//     const hashPass = bcrypt.hashSync( password, salt )
   
-    if( !bcrypt.compareSync( password, passwordDB ) ) return next( null, false, { message: 'Password is not correct.' } )
+//     if( !bcrypt.compareSync( password, passwordDB ) ) return next( null, false, { message: 'Password is not correct.' } )
   
-    next( null, user )
+//     next( null, user )
   
-  } catch (error) {
-    next( error )
-  }
+//   } catch (error) {
+//     next( error )
+//   }
 
-} ) )
+// } ) )
 
 
 // -- CONFIG. FILES --
@@ -110,6 +110,8 @@ app.use( "/", require("./routes"));
 app.use( "/users", require( './routes/user/' ) )
 app.use( "/auth",  require( './routes/auth/' ) )
 app.use("/userAccess", require("./routes/auth/userAccess"));
+app.use( "/external",  require( './externalAPIs' ) )
+
 
 
 
