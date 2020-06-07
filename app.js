@@ -16,7 +16,33 @@ const app = Express();
 const bodyParser = require("body-parser");
 const mongoose = require( "mongoose" );
 
-const index = require( "./routes" );
+const session = require( 'express-session' )
+const MongoStore = require( 'connect-mongo' )( session )
+
+
+
+// -- .env --
+const SERVER_PORT = process.env.SERVER_PORT || 5000;
+const SERVER_NAME =  process.env.SERVER || 'localhost';
+const DB_PORT = process.env.DB_PORT || '27027';
+const DB_NAME = process.env.DB_NAME || 'PFM_CICE';
+const SECRET = process.env.SECRET || 'basic-auth';
+
+
+
+// -- USING --
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Sistema de sesiones
+app.use( session( {
+  secret: SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+  store: new MongoStore( {
+    mongooseConnection: mongoose.connection
+  } )
+} ) )
 
 
 
@@ -26,20 +52,12 @@ const rol = require( './config/rol.json' )
 
 
 
-// -- .env --
-const SERVER_PORT = process.env.SERVER_PORT || 5000;
-const SERVER_NAME =  process.env.SERVER || 'localhost';
-const DB_PORT = process.env.DB_PORT || '27027';
-const DB_NAME = process.env.DB_NAME || 'PFM_CICE';
-
-
 
 // -- ROUTES --
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// app.use( "/raiz", require( './routes' ) )
-app.use("/", require("./routes"));
+app.use( "/", require("./routes"));
 app.use( "/users", require( './routes/user/' ) )
+app.use( "/auth",  require( './routes/auth/' ) )
+app.use("/userAccess", require("./routes/auth/userAccess"));
 
 
 
