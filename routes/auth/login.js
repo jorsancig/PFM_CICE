@@ -33,7 +33,7 @@ router.post( '/', async( req, res ) => {
 
     } catch (error) {
         console.log( error )
-        return res.status( 500 ).json( { messge: 'Something wrong happens!' } )
+        return res.status( 500 ).json( { message: 'Something wrong happens!' } )
         
     }
 })

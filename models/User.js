@@ -7,11 +7,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: {
     type: String,
-    required: [true, "Name es obligatorio"]
+    required: [true, "Name is mandatory"]
   },
   email: {
     type: String,
-    required: [true, "Email es obligatorio"],
+    required: [true, "Email is mandatory"],
     unique: true
   },
   nickname: {
@@ -20,7 +20,7 @@ const userSchema = new Schema({
   },
   password: {
     type: Object,
-    required: [true, "Password es obligatorio"]
+    required: [true, "Password is mandatory"]
   },
   state: {
     type: Boolean,
