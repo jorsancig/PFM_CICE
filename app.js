@@ -109,8 +109,9 @@ const rol = require( './config/rol.json' )
 app.use( "/", require("./routes"));
 app.use( "/users", require( './routes/user/' ) )
 app.use( "/auth",  require( './routes/auth/' ) )
+app.use( "/collections",  require( './routes/collections/' ) )
 app.use("/userAccess", require("./routes/auth/userAccess"));
-app.use( "/external",  require( './externalAPIs' ) )
+app.use( "/external",  require( './API' ) )
 
 
 
