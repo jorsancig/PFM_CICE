@@ -5,13 +5,14 @@ const bcrypt = require( 'bcryptjs' )
 const Game = require("../../models/Game");
 const inner = require( '../../config/inner.json' )
 const isLoggedIn = require( '../../middlewares/isLoggedIn.js' )
+const isOwner = require( '../../middlewares/isOwner.js' )
 const User = require("../../models/User");
 
 
 
 
 
-router.post( '/', isLoggedIn, async( req, res ) => {
+router.post( '/', [isLoggedIn, isOwner], async( req, res ) => {
 
     const { userID, tittle, appID, url, image, collectionClass } = req.body
     
