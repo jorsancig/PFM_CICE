@@ -11,7 +11,7 @@ const isOwner = require( '../../middlewares/isOwner.js' )
 router.delete( '/:appID', [isLoggedIn, isOwner], async( req, res ) => {
 
     const { appID } = req.params;
-    userID = req.session.currentUser.email
+    const { userID } = req.body
 
     console.log( appID, userID )
 
