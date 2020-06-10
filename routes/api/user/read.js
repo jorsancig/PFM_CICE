@@ -1,6 +1,6 @@
 const Express = require("express");
 const router = Express.Router();
-const User = require("../../models/User");
+const User = require("../../../models/User");
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;

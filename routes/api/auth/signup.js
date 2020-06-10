@@ -1,8 +1,8 @@
 const Express = require("express");
 const router = Express.Router();
 const bcrypt = require( 'bcryptjs' )
-const User = require("../../models/User");
-const inner = require( '../../config/inner.json' )
+const User = require("../../../models/User");
+const inner = require( '../../../config/inner.json' )
 
 
 

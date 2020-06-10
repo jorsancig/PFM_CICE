@@ -1,7 +1,7 @@
 
 const Express = require("express");
 const router = Express.Router();
-const User = require("../../models/User");
+const User = require("../../../models/User");
 
 
 router.delete("/:id", async (req, res) => {

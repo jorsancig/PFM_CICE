@@ -1,7 +1,7 @@
 
 const Express = require("express");
 const router = Express.Router();
-const User = require("../../models/User");
+const User = require("../../../models/User");
 
 router.put("/", async (req, res) => {
   const { name, email, role, password } = req.body;

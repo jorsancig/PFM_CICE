@@ -1,10 +1,10 @@
 
 const Express = require("express");
 const router = Express.Router();
-const Game = require("../../models/Game");
-const innerClasses = require( '../../config/gameClass.json' )
-const isLoggedIn = require( '../../middlewares/isLoggedIn.js' )
-const isOwner = require( '../../middlewares/isOwner.js' )
+const Game = require("../../../models/Game");
+const innerClasses = require( '../../../config/gameClass.json' )
+const isLoggedIn = require( '../../../middlewares/isLoggedIn.js' )
+const isOwner = require( '../../../middlewares/isOwner.js' )
 
 
 router.get( '/:collectionClass', [isLoggedIn, isOwner], async( req, res ) => {

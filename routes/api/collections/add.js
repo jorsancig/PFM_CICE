@@ -2,11 +2,11 @@
 const Express = require("express");
 const router = Express.Router();
 const bcrypt = require( 'bcryptjs' )
-const Game = require("../../models/Game");
-const inner = require( '../../config/inner.json' )
-const isLoggedIn = require( '../../middlewares/isLoggedIn.js' )
-const isOwner = require( '../../middlewares/isOwner.js' )
-const User = require("../../models/User");
+const Game = require("../../../models/Game");
+const inner = require( '../../../config/inner.json' )
+const isLoggedIn = require( '../../../middlewares/isLoggedIn.js' )
+const isOwner = require( '../../../middlewares/isOwner.js' )
+const User = require("../../../models/User");
 
 
 

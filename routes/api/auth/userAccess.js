@@ -2,7 +2,7 @@
 const Express = require("express");
 const router = Express.Router();
 const bcrypt = require( 'bcryptjs' )
-const isLoggedIn = require( '../../middlewares/isLoggedIn.js' )
+const isLoggedIn = require( '../../../middlewares/isLoggedIn.js' )
 
 
 

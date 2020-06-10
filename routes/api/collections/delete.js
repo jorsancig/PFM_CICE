@@ -1,9 +1,9 @@
 
 const Express = require("express");
 const router = Express.Router();
-const Game = require("../../models/Game");
-const isLoggedIn = require( '../../middlewares/isLoggedIn.js' )
-const isOwner = require( '../../middlewares/isOwner.js' )
+const Game = require("../../../models/Game");
+const isLoggedIn = require( '../../../middlewares/isLoggedIn.js' )
+const isOwner = require( '../../../middlewares/isOwner.js' )
 
 
 router.delete( '/:appID', [isLoggedIn, isOwner], async( req, res ) => {
