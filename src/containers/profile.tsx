@@ -30,10 +30,10 @@ console.log( 'birth', birth )
 console.log( 'birth', formBirth )
 
 const initialFormData = Object.freeze({
-  nickName:nickname != 'null' ? nickname : 'foolUser',
-  name:name != 'null' ? name: 'Fool User',
+  nickName:nickname !== 'null' ? nickname : 'foolUser',
+  name:name !== 'null' ? name: 'Fool User',
   birth: formBirth,
-  username: username != 'null' ? username : 'fooluser@alotofgames.com',
+  username: username !== 'null' ? username : 'fooluser@alotofgames.com',
   currentPassword: "",
   newPassword1: "",
   newPassword2: "",
@@ -106,7 +106,7 @@ const SettingView =() => {
       localStorage.setItem('name_'+username, formData.name)
 
 
-      if( user.status == 200) return setOpen(true);
+      if( user.status === 200) return setOpen(true);
     } catch (error) {
       return setOpenError(true);
 
@@ -135,7 +135,6 @@ const SettingView =() => {
   
 
   console.log( username,name,nickname,birth )
-  const a = 'hoa'
   console.log( localStorage )
   return(
     <>
