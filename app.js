@@ -15,9 +15,14 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
-
+//----------------------------//
+//    4. SUBIDA DE ARCHIVOS   //
+//----------------------------//
+// 4.1. configuración de middleware de recogida de archivos
+// app.use(fileUpload());
+// 4.2. (continúa en ./routes/upload/upload)
 
 app.use("/", indexRouter);
 

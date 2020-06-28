@@ -4,7 +4,6 @@ var path = require("path");
 const mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 
-const fileUpload = require("express-fileupload");
 
 var app = express();
 
@@ -12,7 +11,6 @@ var app = express();
 // 1. CONFIGURACIÓN DE LA ESTRATEGIA DE PASSPORT LOCAL Y JWT //
 //-----------------------------------------------------------//
 
-require("./passport/config")(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
