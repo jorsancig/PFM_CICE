@@ -16,6 +16,9 @@ const app = Express();
 const bodyParser = require("body-parser");
 const mongoose = require( "mongoose" );
 const path = require("path");
+var express = require("express");
+var router = express.Router();
+
 
 // LOGIN
 // Basic
