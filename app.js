@@ -119,7 +119,10 @@ app.use( "/api/collections",  require( './routes/api/collections' ) )
 app.use( "/api/userAccess", require("./routes/api/auth/userAccess"));
 app.use( "/api/external",  require( './API' ) )
 // app.use( "/", require( "./routes/" ) )
-
+router.get("/",  (req, res, next) => {
+  // en caso de entrar a la función, quiere decir que el usuario esta autorizado
+  res.json({ message: "Autorizado" });
+});
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
