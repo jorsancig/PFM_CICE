@@ -112,13 +112,13 @@ const rol = require( './config/rol.json' )
 
 
 // -- ROUTES --
-app.use( "/", require("./routes"));
+// app.use( "/", require("./routes"));
 app.use( "/api/users", require( './routes/api/user/' ) )
 app.use( "/api/auth",  require( './routes/api/auth/' ) )
 app.use( "/api/collections",  require( './routes/api/collections' ) )
 app.use( "/api/userAccess", require("./routes/api/auth/userAccess"));
 app.use( "/api/external",  require( './API' ) )
-app.use( "/", require( "./routes/" ) )
+// app.use( "/", require( "./routes/" ) )
 
 
 app.set("views", path.join(__dirname, "views"));
