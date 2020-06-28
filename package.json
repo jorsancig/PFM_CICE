@@ -44,9 +44,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject"
+    "heroku-postbuild": "node app.js"
+
   },
   "eslintConfig": {
     "extends": "react-app"
