@@ -12,9 +12,10 @@ const User = require("../../../models/User");
 
 
 
-router.post( '/', [isLoggedIn, isOwner], async( req, res ) => {
-
+router.post( '/', async( req, res ) => {
+    console.log( 'ADD' )
     const { userID, tittle, appID, url, image, collectionClass } = req.body
+    console.log( userID, tittle, appID, url, image, collectionClass )
     
     try {
         const user = await User.findOne( { "email": userID } )
@@ -22,9 +23,9 @@ router.post( '/', [isLoggedIn, isOwner], async( req, res ) => {
         // Status 409 => Conflict
         if ( !user ) return res.status( 409 ).json( { message: 'The user does not exists' } )
 
-        const gameDB = await Game.find( { 'userID': userID, 'appID': appID } );
+        const gameDB = await Game.findOne( { 'userID': userID, 'appID': appID } );
 
-        if( gameDB.length > 0 ) return res.status( 409 ).json( { message: 'Game is already in a collection' } )
+        if( gameDB ) return res.status( 409 ).json( { message: 'Game is already in a collection' }, )
         
     } catch (error) {
         console.log( error )
@@ -43,7 +44,7 @@ router.post( '/', [isLoggedIn, isOwner], async( req, res ) => {
 
     try {
         const gameDB = await game.save()
-        return res.status( 200 ).json( { message: 'Gamme added.', gameDB } )
+        return res.status( 200 ).json( { message: 'Gamme added.' } )
     } catch (error) {
         console.log( error )
         return res.status( 500 ).json( { message: 'Something wrong happens!' } )

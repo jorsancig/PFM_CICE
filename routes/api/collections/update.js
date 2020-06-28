@@ -4,29 +4,42 @@ const router = Express.Router();
 const Game = require("../../../models/Game");
 const isLoggedIn = require( '../../../middlewares/isLoggedIn.js' )
 const isOwner = require( '../../../middlewares/isOwner.js' )
+const User = require("../../../models/User");
 
 
-router.post( '/:appID', [isLoggedIn, isOwner], async( req, res ) => {
+router.post( '/:appID', async( req, res ) => {
   
   
-  const { appID } = req.params;
+  let { appID } = req.params;
   const { userID, tittle, url, image, collectionClass } = req.body
-  const updatedInfo = { userID, tittle, url, image, collectionClass }
+  const updatedInfo = { userID, tittle, url, image, collectionClass, appID }
+  console.log( 'UPDATED: ', updatedInfo )
 
-
+  appID = appID.toString()
   try {
+
+    const gameDB = await Game.findOne( { userID, appID } )
+    // console.log( await gameDB )
+
+    if( await !gameDB ) return res.status( 202 ).json( { message: 'Game does not exist.', updated:false } )
+    // console.log( 'UPDATED: ', gameDB )
+
+
     const options = {
-      new: true,
-      runValidators: true
-    };
+        new: true,
+        runValidators: true
+      };
+    const id = gameDB._id
+    console.log( id )
+    const newGame = await Game.findByIdAndUpdate( id, updatedInfo , options )
 
-    const gameDB = await Game.findOneAndUpdate( { "appID": appID, "userID": userID }, updatedInfo, options);
+    return res.status( 200 ).json( { message: 'Game updated.', updated:true, newGame} )
 
-    res.status( 200 ).json( gameDB )
-  } catch (error) {
-    console.log(error);
-    res.status(400).json( { message: error.message, errors: error.errors, status: 400, ok: false } );
-  }
+} catch (error) {
+    console.log( error );
+    return res.status( 500 ).json( { message: 'Something wrong happens!' } )
+
+}
 });
 
 
