@@ -43,11 +43,10 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./bin/www",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject",
-    "testing": "VACIO"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
