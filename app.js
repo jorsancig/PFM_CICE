@@ -15,6 +15,7 @@ const Express = require("express");
 const app = Express();
 const bodyParser = require("body-parser");
 const mongoose = require( "mongoose" );
+const path = require("path");
 
 // LOGIN
 // Basic
@@ -38,6 +39,11 @@ const SECRET = process.env.SECRET || 'basic-auth';
 // -- USING --
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // Sistema de sesiones
 app.use( session( {
   secret: SECRET,
@@ -112,14 +118,16 @@ app.use( "/api/auth",  require( './routes/api/auth/' ) )
 app.use( "/api/collections",  require( './routes/api/collections' ) )
 app.use( "/api/userAccess", require("./routes/api/auth/userAccess"));
 app.use( "/api/external",  require( './API' ) )
+app.use( "/", require( "./routes/" ) )
 
 
-
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
 
 
 // DB connection
 mongoose
-    .connect( `mongodb://${SERVER_NAME}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true } )
+    .connect( `mongodb://${SERVER_NAME}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } )
     .then( () => console.log( `Connected to mongo on port ${DB_PORT} to ${DB_NAME} database` ) )
     .catch( err => { throw err } )
 
