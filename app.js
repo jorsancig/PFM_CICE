@@ -51,15 +51,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Sistema de sesiones
-// app.use( session( {
-//   secret: SECRET,
-//   resave: true,
-//   saveUninitialized: true,
-//   cookie: { secure: false },
-//   store: new MongoStore( {
-//     mongooseConnection: mongoose.connection
-//   } )
-// } ) )
+app.use( session( {
+  secret: SECRET,
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false },
+  store: new MongoStore( {
+    mongooseConnection: mongoose.connection
+  } )
+} ) )
 
 
 // PASSPORT
@@ -137,10 +137,10 @@ router.get("/",  (req, res, next) => {
 
 
 // DB connection
-// mongoose
-//     .connect( `mongodb://${SERVER_NAME}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } )
-//     .then( () => console.log( `Connected to mongo on port ${DB_PORT} to ${DB_NAME} database` ) )
-//     .catch( err => { throw err } )
+mongoose
+    .connect( process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } )
+    .then( () => console.log( `Connected to mongo on port ${DB_PORT} to ${DB_NAME} database` ) )
+    .catch( err => { throw err } )
 
 
 
