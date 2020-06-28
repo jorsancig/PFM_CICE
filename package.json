@@ -43,11 +43,12 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "react": "react-scripts start",
+    "start": "node ./bin/www && npm run reac"
   },
   "eslintConfig": {
     "extends": "react-app"
