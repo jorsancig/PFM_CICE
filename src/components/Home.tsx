@@ -91,7 +91,7 @@ const Home = () => {
                       password: formData.password
                   }
                   console.log( params )
-    const url = `http://localhost:8000/api/auth/login`
+    const url = `/api/auth/login`
     const user = await axios.post( url, params )
     console.log( 'user', user )
     if( await user.status === 200 ){
@@ -113,7 +113,7 @@ const Home = () => {
   const handleRegister = async ( e:any ) => {
     e.preventDefault()
     console.log(formData.username, formData.password, formData.nick);
-    const url = `http://localhost:8000/api/auth/signup`
+    const url = `api/auth/signup`
     const params = {
       email: formData.username,
       password: formData.password,
