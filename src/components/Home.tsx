@@ -105,7 +105,7 @@ const Home = () => {
 
 
 
-      return history.push( `/search/` )
+      // return history.push( `/search/` )
 
     }
   };
@@ -123,13 +123,14 @@ const Home = () => {
     console.log( user )
     if ( user.status !== 200 ) return
     const username = localStorage.getItem('username')
-		localStorage.removeItem('status_'+username)
-    localStorage.removeItem('username')
+		localStorage.clear()
     const newUsername = formData.username
 
     localStorage.setItem('username', newUsername)
     localStorage.setItem('status_'+newUsername, '1')
-    
+    localStorage.setItem('name_'+newUsername, formData.nick)
+
+    return history.push( `/search/` )
 
   }
 
@@ -227,7 +228,7 @@ const Home = () => {
                     />
                   </FormGroup>
                 </Col>
-                <Button variant="outlined" onClick={handleRegister}>Submit</Button>
+                <Button variant="outlined" onClick={handleRegister}>REGISTRAR</Button>
               </Form>
             </TabPanel>
           </Grid>
