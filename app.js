@@ -129,10 +129,10 @@ app.set("view engine", "hbs");
 
 
 // DB connection
-mongoose
-    .connect( `mongodb://${SERVER_NAME}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } )
-    .then( () => console.log( `Connected to mongo on port ${DB_PORT} to ${DB_NAME} database` ) )
-    .catch( err => { throw err } )
+// mongoose
+//     .connect( `mongodb://${SERVER_NAME}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } )
+//     .then( () => console.log( `Connected to mongo on port ${DB_PORT} to ${DB_NAME} database` ) )
+//     .catch( err => { throw err } )
 
 
 
