@@ -49,8 +49,7 @@
     "eject": "react-scripts eject",
     "react": "react-scripts start",
     "combo": "concurrently  \"npm run react\" \"node ./bin/www\"",
-    "start": "node ./bin/www",
-    "heroku-postbuild": "npm run react"
+    "start": "node ./bin/www"
   },
   "eslintConfig": {
     "extends": "react-app"
