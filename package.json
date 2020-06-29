@@ -38,12 +38,14 @@
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "simple-react-calendar": "^2.2.1",
+    "supertest": "^4.0.2",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
+    "react": "react-scripts star",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

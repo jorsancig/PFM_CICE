@@ -14,7 +14,7 @@ router.post( '/', async ( req, res ) => {
     const SALT_ROUNDS = inner.salt_rounds;
 
     const salt = bcrypt.genSaltSync( SALT_ROUNDS )
-
+    console.log( email, password, role, name )
     try {
 
         const user = await User.findOne( { email } )
@@ -28,17 +28,17 @@ router.post( '/', async ( req, res ) => {
     }
 
 
-    const hashPass = bcrypt.hashSync( password, salt )
-
-    const user = new User( {
-        email,
-        password: hashPass,
-        role,
-        name
-    } )
+  
 
     try {
-        
+        const hashPass = bcrypt.hashSync( password, salt )
+
+        const user = new User( {
+            email,
+            password: hashPass,
+            role,
+            name
+        } )
         const userDB = await user.save();
         return res.status( 200 ).json( { message: 'User authenticated.', userDB } )
 
