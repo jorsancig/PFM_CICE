@@ -32,7 +32,7 @@ router.post( '/:appID', async( req, res ) => {
     const id = gameDB._id
     console.log( id )
     const newGame = await Game.findByIdAndUpdate( id, updatedInfo , options )
-
+console.log( 'NEWGAME: ', newGame )
     return res.status( 200 ).json( { message: 'Game updated.', updated:true, newGame} )
 
 } catch (error) {

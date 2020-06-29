@@ -19,6 +19,7 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "classnames": "2.2.6",
+    "concurrently": "^5.2.0",
     "connect-mongo": "^3.2.0",
     "express-session": "^1.17.1",
     "mdbreact": "^4.27.0",
@@ -43,10 +44,11 @@
   },
   "scripts": {
     "start": "node app.js",
-    "react": "react-scripts star",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cice": "concurrently  \"npm run react\" \"node app.js"
   },
   "eslintConfig": {
     "extends": "react-app"

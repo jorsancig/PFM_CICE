@@ -36,7 +36,7 @@ router.post( '/',/* [isLoggedIn, isOwner], */ async( req, res ) => {
     const game = new Game( {
         userID,
         tittle,
-        appID,
+        appID:appID.toString(),
         url,
         image,
         collectionClass
