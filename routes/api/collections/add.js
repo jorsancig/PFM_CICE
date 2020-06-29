@@ -12,7 +12,7 @@ const User = require("../../../models/User");
 
 
 
-router.post( '/', async( req, res ) => {
+router.post( '/',/* [isLoggedIn, isOwner], */ async( req, res ) => {
     console.log( 'ADD' )
     const { userID, tittle, appID, url, image, collectionClass } = req.body
     console.log( userID, tittle, appID, url, image, collectionClass )
