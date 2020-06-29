@@ -4,14 +4,11 @@ const Express = require("express");
 const router = Express.Router();
 
 
+router.get("/", async (req, res) => {
+    const { data } = await axios.get("https://jsonplaceholder.typicode.com/users")
 
-const fool = (req, res) => {
-    // const { data } = await axios.get("https://jsonplaceholder.typicode.com/users")
-
-    res.send(200)
-}
-
-router.get("/", fool( req, res ));
+    res.send(data)
+});
 
 
 module.exports = router;

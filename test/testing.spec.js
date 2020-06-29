@@ -46,7 +46,7 @@ describe("Server", ()=> {
                         send: jest.fn()
                     }
         
-                    await users.get( '/', ({}, res))
+                    await users.get(({}, res))
                 
                     expect(res.send.mock.calls).toEqual([ [ 1 ] ])
         
