@@ -1,0 +1,6 @@
+{
+    "follow"        :   "FOLLOW_CLASS",
+    "love"          :   "LOVE_CLASS",
+    "pendent"       :   "PENDENT_CLASS",
+    "collection"    :   "COLLECTION_CLASS"
+}
