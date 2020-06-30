@@ -23,7 +23,8 @@ El repositorio de Git se encuentra publicado en la siguiente url:
  3.2 `npm run cice`el cual inicia el proyecto de backend y frontend (necesario, pues el proyecto de frontend realiza llamadas a la API).
 
 
-
+# Disclaimer
+Las rutas para el backend no se encuentran todas capadas si no estás logeado porque tuve algunos problemas ne la conexión backend-frontend y tuve que dejarlo abierto. No obstante, en algunos endpoints puede comprobarse que se capa mediante un middleware (en otros está comentado) el acceso a usuarios que no están logeados.
 
 ---
 ### Personal
