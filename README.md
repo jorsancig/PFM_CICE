@@ -11,13 +11,16 @@ El proyecto de backend se encuentra disponible en la siguiente url:
 [https://alotofgamesheroku.herokuapp.com/](https://alotofgamesheroku.herokuapp.com)
 El repositorio de Git se encuentra publicado en la siguiente url:
 [https://github.com/jorsancig/PFM_CICE](https://github.com/jorsancig/PFM_CICE)
+ - Rama de desarrollo: DEV_PFM
+ - Rama final ('producción'): MASTER_PFM
+
 # Proyecto en local
 
  1. Realizar un `npm init` para inicializar el proyecto.
  2. Realizar un `npm i` para instalar las dependencias pertinentes.
  3. Ejecutar uno de los siguientes comandos:
  3.1 `npm start`para inicializar el proyecto backend.
- 3.2 `npm run cice`el cual inicia el proyecto de frontend y backend (necesario, pues el proyecto de frontend realiza llamadas a la API).
+ 3.2 `npm run cice`el cual inicia el proyecto de backend y frontend (necesario, pues el proyecto de frontend realiza llamadas a la API).
 
 
 
